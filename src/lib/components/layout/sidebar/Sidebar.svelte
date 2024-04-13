@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { LanguageSelector, SearchInput } from '$lib/components/common';
+	import { page } from '$app/stores';
+	import { LanguageSelector } from '$lib/components/common';
 	import { SideMenu } from '$lib/constants/SideMenu';
 	import {
 		Button,
@@ -12,18 +13,19 @@
 		SidebarWrapper
 	} from 'flowbite-svelte';
 	import { AdjustmentsVerticalSolid, CogSolid } from 'flowbite-svelte-icons';
+	import { NavBrand } from '..';
 
-	export let searchValue = '';
+	$: activeUrl = $page.url.pathname;
 </script>
 
 <Sidebar
-	class="fixed left-0 top-0 z-40 h-screen w-64 -translate-x-full border-r border-gray-200 bg-white pt-14 transition-transform dark:border-gray-700 dark:bg-gray-800 md:translate-x-0"
-	id="drawer-navigation"
+	class="hidden h-screen border-r border-gray-200 dark:border-gray-700 dark:bg-gray-800 md:inline-block"
+	{activeUrl}
 >
-	<SidebarWrapper class="h-full">
-		<form action="#" method="GET" class="mb-2 md:hidden">
-			<SearchInput bind:value={searchValue} />
-		</form>
+	<SidebarWrapper class="bg-white">
+		<div class="flex items-center justify-start gap-2 pb-9 pt-2">
+			<NavBrand />
+		</div>
 
 		{#each SideMenu as menu, i}
 			<SidebarGroup border={i !== 0}>

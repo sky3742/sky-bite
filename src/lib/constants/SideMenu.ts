@@ -1,12 +1,9 @@
 import {
-	ChartPieSolid,
+	CartSolid,
+	ChartOutline,
 	ClipboardSolid,
-	FileLinesSolid,
-	InboxSolid,
-	LayersSolid,
-	LockSolid,
-	QuestionCircleSolid,
-	ShoppingBagSolid
+	HomeSolid,
+	UsersSolid
 } from 'flowbite-svelte-icons';
 import type {
 	LayersSolidEvents,
@@ -24,87 +21,30 @@ export interface MenuItem {
 
 const firstSection: MenuItem[] = [
 	{
-		label: 'Overview',
-		icon: ChartPieSolid,
-		href: '/#'
+		label: 'Home',
+		icon: HomeSolid,
+		href: '/'
 	},
 	{
-		label: 'Pages',
-		icon: FileLinesSolid,
-		submenu: [
-			{
-				label: 'Settings',
-				href: '/#'
-			},
-			{
-				label: 'Kanban',
-				href: '/#'
-			},
-			{
-				label: 'Calendar',
-				href: '/#'
-			}
-		]
+		label: 'Orders',
+		icon: CartSolid,
+		href: '/orders'
 	},
 	{
-		label: 'Sales',
-		icon: ShoppingBagSolid,
-		submenu: [
-			{
-				label: 'Products',
-				href: '/#'
-			},
-			{
-				label: 'Billing',
-				href: '/#'
-			},
-			{
-				label: 'Invoice',
-				href: '/#'
-			}
-		]
-	},
-	{
-		label: 'Messages',
-		icon: InboxSolid,
-		href: '/#'
-	},
-	{
-		label: 'Authentication',
-		icon: LockSolid,
-		submenu: [
-			{
-				label: 'Sign In',
-				href: '/#'
-			},
-			{
-				label: 'Sign Up',
-				href: '/#'
-			},
-			{
-				label: 'Forgot Password',
-				href: '/#'
-			}
-		]
-	}
-];
-
-const secondSection: MenuItem[] = [
-	{
-		label: 'Docs',
+		label: 'Menu',
 		icon: ClipboardSolid,
-		href: '/#'
+		href: '/menu'
 	},
 	{
-		label: 'Components',
-		icon: LayersSolid,
-		href: '/#'
+		label: 'Customers',
+		icon: UsersSolid,
+		href: '/customers'
 	},
 	{
-		label: 'Help',
-		icon: QuestionCircleSolid,
-		href: '/#'
+		label: 'Analytics',
+		icon: ChartOutline,
+		href: '/analytics'
 	}
 ];
 
-export const SideMenu: MenuItem[][] = [firstSection, secondSection];
+export const SideMenu: MenuItem[][] = [firstSection];

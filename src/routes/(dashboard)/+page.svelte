@@ -1,6 +1,11 @@
-<script>
-	import { A, Heading, P } from 'flowbite-svelte';
+<script lang="ts">
+	import { AnalyticCard } from '$lib/components/common';
 </script>
 
-<Heading tag="h1">Welcome to SvelteKit</Heading>
-<P>Visit <A href="https://kit.svelte.dev">kit.svelte.dev</A> to read the documentation</P>
+<div class="grid gap-6">
+	<div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+		<AnalyticCard label="New Orders" value={23} />
+		<AnalyticCard label="In-Progress Orders" value={12} />
+		<AnalyticCard label="Completed Orders" value={34} />
+	</div>
+</div>

@@ -1,14 +1,17 @@
 <script>
-	import Navbar from '$lib/components/layout/navbar/Navbar.svelte';
-	import Sidenav from '$lib/components/layout/sidebar/Sidebar.svelte';
+	import { Navbar, Sidebar } from '$lib/components/layout';
 </script>
 
-<div class="bg-gray-50 antialiased dark:bg-gray-900">
-	<Navbar />
+<div class="flex bg-gray-50 antialiased dark:bg-gray-900">
+	<div class="relative">
+		<Sidebar />
+	</div>
 
-	<Sidenav />
+	<div class="flex max-h-screen w-full flex-col">
+		<Navbar />
 
-	<main class="h-auto p-4 pt-20 md:ml-64">
-		<slot />
-	</main>
+		<main class="h-auto overflow-auto p-4">
+			<slot />
+		</main>
+	</div>
 </div>

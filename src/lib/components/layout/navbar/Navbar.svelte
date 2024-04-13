@@ -1,40 +1,23 @@
 <script lang="ts">
-	import {
-		AppsDropdown,
-		NotificationDropdown,
-		SearchInput,
-		UserMenu
-	} from '$lib/components/common';
-	import { APP_LOGO, APP_NAME, APP_URL } from '$lib/constants/Constant';
-	import { NavBrand, NavHamburger, Navbar } from 'flowbite-svelte';
-
-	let searchValue = '';
+	import { AppsDropdown, NotificationDropdown, UserMenu } from '$lib/components/common';
+	import { Navbar } from 'flowbite-svelte';
+	import { NavBrand } from '..';
 </script>
 
 <Navbar
-	let:toggle
 	let:NavContainer
-	class="fixed left-0 right-0 top-0 z-50 border-b border-gray-200 bg-white px-4 py-2.5 dark:border-gray-700 dark:bg-gray-800"
+	class="border-b border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800"
 >
-	<NavContainer class="flex flex-wrap items-center justify-between">
-		<div class="flex items-center justify-start">
-			<NavHamburger onClick={toggle} />
-
-			<NavBrand href={APP_URL}>
-				<img src={APP_LOGO} class="mr-3 h-8" alt="{APP_NAME} Logo" />
-				<span
-					class="hidden self-center whitespace-nowrap text-2xl font-semibold dark:text-white md:inline"
-				>
-					{APP_NAME}
-				</span>
-			</NavBrand>
-
-			<form action="#" method="GET" class="hidden md:block md:w-64 md:pl-2 lg:w-96">
-				<SearchInput bind:value={searchValue} />
-			</form>
+	<NavContainer class="flex w-full justify-between md:justify-end">
+		<div class="pl-2 md:hidden">
+			<NavBrand />
 		</div>
 
-		<div class="flex items-center lg:order-2">
+		<!-- <div class="hidden md:inline-block">
+			<Breadcrumb />
+		</div> -->
+
+		<div class="flex items-center">
 			<NotificationDropdown />
 			<AppsDropdown />
 			<UserMenu />
