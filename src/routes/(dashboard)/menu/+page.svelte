@@ -1,10 +1,24 @@
 <script lang="ts">
+	import ManageMenuTab from '../../../lib/components/menu/manage-menu-tab/ManageMenuTab.svelte';
+
 	import { ManageCategoryTab } from '$lib/components/categories';
 	import type { Category } from '$lib/types/category';
-	import { Heading, TabItem, Tabs } from 'flowbite-svelte';
-	import { EyeSlashOutline } from 'flowbite-svelte-icons';
+	import type { Menu } from '$lib/types/menu';
+	import { Heading, Tabs } from 'flowbite-svelte';
 
 	export let data;
+
+	const handleCreateItem = (item: Menu) => {
+		data.menu = [...data.menu, item];
+	};
+	const handleEditItem = (item: Menu) => {
+		const menuIndex = data.menu.findIndex(({ id }) => id === item.id);
+		data.menu[menuIndex] = item;
+		data.menu = [...data.menu];
+	};
+	const handleDeleteItem = (item: Menu) => {
+		data.menu = data.menu.filter(({ id }) => id !== item.id);
+	};
 
 	const handleCreateCategory = (category: Category) => {
 		data.categories = [...data.categories, category];
@@ -32,14 +46,14 @@
 			/>
 
 			{#each data.categories as category}
-				<TabItem title={category.name}>
-					<div slot="title" class="flex gap-2">
-						{category.name}
-						{#if !category.isActive}
-							<EyeSlashOutline />
-						{/if}
-					</div>
-				</TabItem>
+				<ManageMenuTab
+					categories={data.categories}
+					currentCategory={category}
+					menu={data.menu.filter(({ categoryId }) => categoryId === category.id)}
+					onCreate={handleCreateItem}
+					onEdit={handleEditItem}
+					onDelete={handleDeleteItem}
+				/>
 			{/each}
 		</Tabs>
 	</div>
