@@ -1,10 +1,4 @@
-import {
-	CartSolid,
-	ChartOutline,
-	ClipboardSolid,
-	HomeSolid,
-	UsersSolid
-} from 'flowbite-svelte-icons';
+import { CartSolid, ChartOutline, ClipboardSolid, HomeSolid } from 'flowbite-svelte-icons';
 import type {
 	LayersSolidEvents,
 	LayersSolidProps,
@@ -34,11 +28,6 @@ const firstSection: MenuItem[] = [
 		label: 'Menu',
 		icon: ClipboardSolid,
 		href: '/menu'
-	},
-	{
-		label: 'Customers',
-		icon: UsersSolid,
-		href: '/customers'
 	},
 	{
 		label: 'Analytics',
