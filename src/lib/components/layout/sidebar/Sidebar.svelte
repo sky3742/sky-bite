@@ -19,7 +19,7 @@
 </script>
 
 <Sidebar
-	class="hidden h-screen border-r border-gray-200 dark:border-gray-700 dark:bg-gray-800 md:inline-block"
+	class="hidden h-screen border-r border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800 md:inline-block"
 	{activeUrl}
 >
 	<SidebarWrapper class="bg-white">
@@ -60,7 +60,7 @@
 		{/each}
 
 		<div
-			class="absolute bottom-0 left-0 z-20 hidden w-full justify-center space-x-4 bg-white p-4 dark:bg-gray-800 lg:flex"
+			class="absolute bottom-0 -left-1 z-20 hidden w-full justify-center space-x-4 bg-white p-4 dark:bg-gray-800 lg:flex"
 		>
 			<DarkMode />
 
