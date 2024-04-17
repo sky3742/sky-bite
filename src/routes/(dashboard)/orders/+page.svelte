@@ -3,7 +3,7 @@
 	import OrderTable from '$lib/components/orders/order-table/OrderTable.svelte';
 	import { processOrder } from '$lib/services/order';
 	import { OrderStatus, type Order } from '$lib/types/order';
-	import { Button, Heading } from 'flowbite-svelte';
+	import { Button } from 'flowbite-svelte';
 	import { PlusOutline } from 'flowbite-svelte-icons';
 
 	export let data;
@@ -22,8 +22,6 @@
 </script>
 
 <div class="flex min-h-96 flex-col gap-6">
-	<Heading tag="h3">Orders</Heading>
-
 	<div class="flex items-end justify-between gap-2">
 		<OrderStatusFilter bind:filterStatus />
 

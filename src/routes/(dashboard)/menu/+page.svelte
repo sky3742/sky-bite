@@ -4,7 +4,7 @@
 	import { ManageCategoryTab } from '$lib/components/categories';
 	import type { Category } from '$lib/types/category';
 	import type { Menu } from '$lib/types/menu';
-	import { Heading, Tabs } from 'flowbite-svelte';
+	import { Tabs } from 'flowbite-svelte';
 
 	export let data;
 
@@ -33,28 +33,22 @@
 	};
 </script>
 
-<div class="grid gap-2">
-	<Heading tag="h3">Menu</Heading>
+<Tabs style="underline" divider={false}>
+	<ManageCategoryTab
+		categories={data.categories}
+		onCreate={handleCreateCategory}
+		onEdit={handleEditCategory}
+		onDelete={handleDeleteCategory}
+	/>
 
-	<div class="relative">
-		<Tabs style="underline" divider={false}>
-			<ManageCategoryTab
-				categories={data.categories}
-				onCreate={handleCreateCategory}
-				onEdit={handleEditCategory}
-				onDelete={handleDeleteCategory}
-			/>
-
-			{#each data.categories as category}
-				<ManageMenuTab
-					categories={data.categories}
-					currentCategory={category}
-					menu={data.menu.filter(({ categoryId }) => categoryId === category.id)}
-					onCreate={handleCreateItem}
-					onEdit={handleEditItem}
-					onDelete={handleDeleteItem}
-				/>
-			{/each}
-		</Tabs>
-	</div>
-</div>
+	{#each data.categories as category}
+		<ManageMenuTab
+			categories={data.categories}
+			currentCategory={category}
+			menu={data.menu.filter(({ categoryId }) => categoryId === category.id)}
+			onCreate={handleCreateItem}
+			onEdit={handleEditItem}
+			onDelete={handleDeleteItem}
+		/>
+	{/each}
+</Tabs>
