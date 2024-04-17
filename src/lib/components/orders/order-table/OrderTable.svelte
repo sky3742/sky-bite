@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { OrderItemStatus, OrderTypeLabel, type Order, type OrderItem } from '$lib/types/order';
+	import { OrderItemStatus, OrderStatus, type Order, type OrderItem } from '$lib/types/order';
 	import {
 		Button,
 		Table,
@@ -38,7 +38,7 @@
 		<TableHeadCell>Order</TableHeadCell>
 		<TableHeadCell>Time</TableHeadCell>
 		<TableHeadCell>Sales</TableHeadCell>
-		<TableHeadCell>Type</TableHeadCell>
+		<TableHeadCell>Table</TableHeadCell>
 		<TableHeadCell>Status</TableHeadCell>
 		<TableHeadCell>Action</TableHeadCell>
 	</TableHead>
@@ -55,15 +55,17 @@
 				</TableBodyCell>
 				<TableBodyCell>{order.amount.toLocaleString(navigator.language)}</TableBodyCell>
 				<TableBodyCell>
-					{OrderTypeLabel[order.orderType]}
+					{order.table}
 				</TableBodyCell>
 				<TableBodyCell>
 					<OrderStatusBadge status={order.status} />
 				</TableBodyCell>
 				<TableBodyCell>
-					<Button color="red" outline on:click={() => handleCancelOrder(order)} size="xs">
-						Cancel
-					</Button>
+					{#if order.status === OrderStatus.NEW}
+						<Button color="red" outline on:click={() => handleCancelOrder(order)} size="xs">
+							Cancel
+						</Button>
+					{/if}
 				</TableBodyCell>
 			</TableBodyRow>
 			{#if openOrderId === order.id}

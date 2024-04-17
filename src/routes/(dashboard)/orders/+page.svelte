@@ -27,7 +27,7 @@
 	<div class="flex items-end justify-between gap-2">
 		<OrderStatusFilter bind:filterStatus />
 
-		<Button>
+		<Button disabled>
 			<PlusOutline />
 			New Order
 		</Button>

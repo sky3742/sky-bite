@@ -1,10 +1,4 @@
-import {
-	OrderItemStatus,
-	OrderStatus,
-	OrderType,
-	type Order,
-	type OrderItem
-} from '$lib/types/order';
+import { OrderItemStatus, OrderStatus, type Order, type OrderItem } from '$lib/types/order';
 import { faker } from '@faker-js/faker';
 import { Food } from './menu';
 
@@ -17,7 +11,14 @@ export const Orders: Order[] = Array.from({ length: 30 }, (_, i) => {
 	return processOrder({
 		id: faker.string.uuid(),
 		order: `#${1000 + 20 - i}`,
-		orderType: faker.helpers.arrayElement(Object.values(OrderType)),
+		table: faker.helpers.arrayElement([
+			'Table 1',
+			'Table 2',
+			'Table 3',
+			'Table 4',
+			'Table 5',
+			'Takeaway'
+		]),
 		date: faker.date.recent(),
 		items: menu,
 		amount: 0,

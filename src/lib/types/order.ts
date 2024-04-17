@@ -7,11 +7,6 @@ export enum OrderStatus {
 	CANCELED = 'canceled'
 }
 
-export enum OrderType {
-	DINEIN = 'dinein',
-	TAKEAWAY = 'takeaway'
-}
-
 export enum OrderItemStatus {
 	PENDING = 'pending',
 	COMPLETED = 'completed',
@@ -21,7 +16,7 @@ export enum OrderItemStatus {
 export interface Order {
 	id: string;
 	order: string;
-	orderType: OrderType;
+	table: string;
 	date: Date;
 	amount: number;
 	status: OrderStatus;
@@ -43,9 +38,4 @@ export const OrderItemStatusLabel = {
 	[OrderItemStatus.PENDING]: 'Pending',
 	[OrderItemStatus.COMPLETED]: 'Completed',
 	[OrderItemStatus.CANCELED]: 'Canceled'
-};
-
-export const OrderTypeLabel = {
-	[OrderType.DINEIN]: 'Dine In',
-	[OrderType.TAKEAWAY]: 'Takeaway'
 };
