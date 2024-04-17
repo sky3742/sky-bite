@@ -60,7 +60,7 @@
 		{/each}
 
 		<div
-			class="absolute bottom-0 -left-1 z-20 hidden w-full justify-center space-x-4 bg-white p-4 dark:bg-gray-800 lg:flex"
+			class="absolute -left-1 bottom-0 z-20 hidden w-full justify-center space-x-4 bg-white p-4 dark:bg-gray-800 lg:flex"
 		>
 			<DarkMode />
 

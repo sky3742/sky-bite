@@ -2,7 +2,7 @@
 	import { Chart } from 'flowbite-svelte';
 	import type { ChartProps } from 'flowbite-svelte/Chart.svelte';
 
-	export let series: ApexAxisChartSeries;//ChartProps['options']['series'];
+	export let series: ApexAxisChartSeries; //ChartProps['options']['series'];
 	export let categories: string[];
 	export let chartOptions: ChartProps['options'] = {};
 
