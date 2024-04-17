@@ -47,13 +47,13 @@
 			<TableBodyRow on:click={() => (openOrderId = openOrderId === order.id ? '' : order.id)}>
 				<TableBodyCell>{order.order}</TableBodyCell>
 				<TableBodyCell>
-					{order.date.toLocaleTimeString(navigator.language, {
+					{order.date.toLocaleTimeString(undefined, {
 						hour12: true,
 						hour: '2-digit',
 						minute: '2-digit'
 					})}
 				</TableBodyCell>
-				<TableBodyCell>{order.amount.toLocaleString(navigator.language)}</TableBodyCell>
+				<TableBodyCell>{order.amount.toLocaleString()}</TableBodyCell>
 				<TableBodyCell>
 					{order.table}
 				</TableBodyCell>
