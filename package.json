@@ -23,8 +23,8 @@
 		"eslint": "^8.56.0",
 		"eslint-config-prettier": "^9.1.0",
 		"eslint-plugin-svelte": "^2.39.0",
-		"flowbite-svelte": "^0.45.0",
-		"flowbite-svelte-blocks": "^1.1.1",
+		"flowbite-svelte": "^0.46.16",
+		"flowbite-svelte-blocks": "^1.1.4",
 		"flowbite-svelte-icons": "^1.6.0",
 		"flowbite-typography": "^1.0.3",
 		"postcss": "^8.4.32",
@@ -37,7 +37,7 @@
 		"tailwindcss": "^3.3.6",
 		"tslib": "^2.4.1",
 		"typescript": "^5.4.5",
-		"vite": "^5.4.16"
+		"vite": "^5.4.19"
 	},
 	"type": "module"
 }
