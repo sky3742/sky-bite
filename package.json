@@ -9,7 +9,9 @@
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "prettier --check . && eslint .",
-		"format": "prettier --write ."
+		"format": "prettier --write .",
+		"test": "echo 'No tests configured'",
+		"prepare": "husky"
 	},
 	"devDependencies": {
 		"@eslint/js": "^10.0.1",
@@ -26,6 +28,8 @@
 		"eslint-config-prettier": "^10.1.8",
 		"eslint-plugin-svelte": "^3.17.1",
 		"globals": "^17.6.0",
+		"husky": "^9.1.7",
+		"lint-staged": "^17.0.5",
 		"postcss": "^8.5.15",
 		"postcss-load-config": "^6.0.1",
 		"prettier": "^3.8.3",
@@ -39,5 +43,11 @@
 		"typescript-eslint": "^8.59.4",
 		"vite": "^8.0.14"
 	},
-	"type": "module"
+	"type": "module",
+	"lint-staged": {
+		"*.{svelte,ts,js,css,md,json}": [
+			"prettier --write"
+		],
+		"package-lock.json": []
+	}
 }

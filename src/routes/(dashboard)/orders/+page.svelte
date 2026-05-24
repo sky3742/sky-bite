@@ -4,7 +4,6 @@
 	import { OrderItemStatus, OrderStatus, type Order } from '$lib/types/order';
 	import { getFood } from '$lib/services/menu';
 	import { getCategories } from '$lib/services/category';
-	import { faker } from '@faker-js/faker';
 	import type { Menu } from '$lib/types/menu';
 	import Drawer from '$lib/components/common/drawer/Drawer.svelte';
 
@@ -66,8 +65,9 @@
 	function removeItem(id: string) {
 		const current = selectedQuantities[id] ?? 0;
 		if (current <= 1) {
-			const { [id]: _, ...rest } = selectedQuantities;
-			selectedQuantities = rest;
+			const next = { ...selectedQuantities };
+			delete next[id];
+			selectedQuantities = next;
 		} else {
 			selectedQuantities = { ...selectedQuantities, [id]: current - 1 };
 		}

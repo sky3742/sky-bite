@@ -1,62 +1,46 @@
-# Svelte Flowbite Boilerplate
+# Sky Bite
 
-This is a boilerplate project for creating web applications with Svelte and Flowbite. It provides a starting point with the basic setup for integrating Svelte and Flowbite, allowing you to quickly start building beautiful and responsive web interfaces.
+A restaurant management dashboard built with Svelte 5, SvelteKit 2, TypeScript, and Tailwind CSS 4. Manage orders, menu items, categories, and track analytics — all powered by ApexCharts.
 
 ## Features
 
-- Integration of Svelte with Flowbite for easy and responsive UI development.
-- Basic project structure and configuration.
-- Development server with hot-reloading for a smooth development experience.
-- Production build script for optimizing and bundling your application.
+- **Dashboard** — Overview of orders, sales, and key metrics
+- **Order Management** — Create, view, filter, and update orders with line-item status tracking
+- **Menu Management** — CRUD for menu items and categories with active/inactive toggles
+- **Analytics** — Visualize weekly/monthly sales, orders, category breakdowns, and top items via ApexCharts
+- **Dark / Light Theme** — Toggleable with persisted preference
+- **Mock Auth** — Simulated login gate powered by localStorage
+
+## Tech Stack
+
+| Layer     | Library                        |
+| --------- | ------------------------------ |
+| Framework | Svelte 5 (runes) + SvelteKit 2 |
+| Language  | TypeScript 6                   |
+| Styling   | Tailwind CSS 4                 |
+| Charts    | ApexCharts                     |
+| Mock Data | Faker.js                       |
 
 ## Getting Started
 
-Follow these steps to get started with the Svelte Flowbite boilerplate:
-
-1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/sky3742/svelte-flowbite-boilerplate.git
-   ```
-
-2. Navigate into the project directory:
-
-   ```bash
-   cd svelte-flowbite-boilerplate
-   ```
-
-3. Install the dependencies:
-
-   ```bash
-   npm install
-   ```
-
-4. Start the development server:
-
-   ```bash
-   npm run dev
-   ```
-
-5. Open your browser and navigate to `http://localhost:5173` to see the application running.
-
-## Building for Production
-
-To build the application for production, use the following command:
-
 ```bash
-npm run build
+pnpm install
+pnpm run dev
 ```
 
-This will create an optimized version of your application in the `.svelte-kit/output` directory, ready to be deployed to a web server.
+Open [http://localhost:5173](http://localhost:5173) and sign in with any email/password (min 6 chars).
 
-## Demo
+## Scripts
 
-https://svelte-flowbite-boilerplate.vercel.app/
-
-## Contributing
-
-Contributions are welcome! If you have any ideas, suggestions, or improvements, feel free to open an issue or create a pull request.
+| Command            | Description                  |
+| ------------------ | ---------------------------- |
+| `pnpm run dev`     | Start development server     |
+| `pnpm run build`   | Build for production         |
+| `pnpm run preview` | Preview production build     |
+| `pnpm run check`   | Type-check with svelte-check |
+| `pnpm run lint`    | Lint with Prettier + ESLint  |
+| `pnpm run format`  | Format with Prettier         |
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+MIT
