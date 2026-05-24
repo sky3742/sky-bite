@@ -5,6 +5,7 @@ package-lock.json
 /.svelte-kit
 /package
 .env
+/coverage
 .env.*
 !.env.example
 vite.config.js.timestamp-*
