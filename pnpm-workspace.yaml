@@ -1,3 +1,0 @@
-allowBuilds:
-  esbuild: false
-  svelte-preprocess: false

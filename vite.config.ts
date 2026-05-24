@@ -5,6 +5,9 @@ import path from 'path';
 
 export default defineConfig({
 	plugins: [tailwindcss(), sveltekit()],
+	build: {
+		chunkSizeWarningLimit: 1000
+	},
 	test: {
 		include: ['src/**/*.test.ts']
 	},
