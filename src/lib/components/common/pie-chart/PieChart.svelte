@@ -1,53 +1,45 @@
 <script lang="ts">
-	import { Chart } from 'flowbite-svelte';
-	import type { ChartProps } from 'flowbite-svelte/Chart.svelte';
+	import { onMount } from 'svelte';
+	import ApexCharts from 'apexcharts';
+	import type { ApexOptions, ApexNonAxisChartSeries } from 'apexcharts';
 
-	export let series: ChartProps['options']['series'];
-	export let labels: ChartProps['options']['labels'];
-	export let chartOptions: ChartProps['options'] = {};
+	let chartEl: HTMLDivElement;
+	let chart: ApexCharts | null = $state(null);
 
-	const options: ChartProps['options'] = {
-		chart: {
-			height: 200,
-			type: 'pie'
-		},
-		stroke: {
-			colors: ['white']
-		},
-		plotOptions: {
-			pie: {
-				dataLabels: {
-					offset: -25
-				}
-			}
-		},
-		dataLabels: {
-			enabled: true
-		},
-		legend: {
-			show: false,
-			position: 'bottom'
-		},
-		yaxis: {
-			labels: {
-				formatter: (value: number) => value + '%'
-			}
-		},
-		xaxis: {
-			labels: {
-				formatter: (value: string) => value + '%'
-			},
-			axisTicks: {
-				show: false
-			},
-			axisBorder: {
-				show: false
-			}
-		},
-		...chartOptions,
+	let {
 		series,
-		labels
-	};
+		labels,
+		chartOptions = {}
+	}: {
+		series: ApexNonAxisChartSeries;
+		labels: string[];
+		chartOptions?: ApexOptions;
+	} = $props();
+
+	const buildOptions = (): ApexOptions => ({
+		chart: { height: 200, type: 'pie' as const },
+		stroke: { colors: ['white'] },
+		plotOptions: {
+			pie: { dataLabels: { offset: -25 } }
+		},
+		dataLabels: { enabled: true },
+		legend: { show: false, position: 'bottom' },
+		series,
+		labels,
+		...chartOptions
+	});
+
+	onMount(() => {
+		chart = new ApexCharts(chartEl, buildOptions());
+		chart.render();
+		return () => chart?.destroy();
+	});
+
+	$effect(() => {
+		if (chart) {
+			chart.updateOptions(buildOptions());
+		}
+	});
 </script>
 
-<Chart {options} />
+<div bind:this={chartEl}></div>

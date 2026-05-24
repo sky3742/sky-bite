@@ -1,67 +1,58 @@
 <script lang="ts">
-	import { Chart } from 'flowbite-svelte';
-	import type { ChartProps } from 'flowbite-svelte/Chart.svelte';
+	import { onMount } from 'svelte';
+	import ApexCharts from 'apexcharts';
+	import type { ApexOptions, ApexAxisChartSeries } from 'apexcharts';
 
-	export let series: ApexAxisChartSeries; //ChartProps['options']['series'];
-	export let categories: string[];
-	export let chartOptions: ChartProps['options'] = {};
+	let chartEl: HTMLDivElement;
+	let chart: ApexCharts | null = $state(null);
 
-	const options: ChartProps['options'] = {
+	let {
+		series,
+		categories,
+		chartOptions = {}
+	}: {
+		series: ApexAxisChartSeries;
+		categories: string[];
+		chartOptions?: ApexOptions;
+	} = $props();
+
+	const buildOptions = (): ApexOptions => ({
 		chart: {
 			height: 200,
-			type: 'line',
-			dropShadow: {
-				enabled: false
-			},
-			toolbar: {
-				show: false
-			}
+			type: 'line' as const,
+			dropShadow: { enabled: false },
+			toolbar: { show: false }
 		},
-		tooltip: {
-			enabled: true,
-			x: {
-				show: false
-			}
-		},
-		dataLabels: {
-			enabled: false
-		},
-		stroke: {
-			width: 4,
-			curve: 'smooth'
-		},
-		grid: {
-			show: false,
-			padding: {
-				left: 10,
-				right: 10,
-				top: -26
-			}
-		},
-		legend: {
-			show: false
-		},
+		tooltip: { enabled: true, x: { show: false } },
+		dataLabels: { enabled: false },
+		stroke: { width: 4, curve: 'smooth' },
+		grid: { show: false, padding: { left: 10, right: 10, top: -26 } },
+		legend: { show: false },
 		xaxis: {
 			categories,
 			labels: {
 				show: true,
-				style: {
-					cssClass: 'text-xs font-normal fill-gray-500 dark:fill-gray-400'
-				}
+				style: { cssClass: 'text-xs font-normal fill-gray-500 dark:fill-gray-400' }
 			},
-			axisBorder: {
-				show: false
-			},
-			axisTicks: {
-				show: false
-			}
+			axisBorder: { show: false },
+			axisTicks: { show: false }
 		},
-		yaxis: {
-			show: false
-		},
-		...chartOptions,
-		series
-	};
+		yaxis: { show: false },
+		series,
+		...chartOptions
+	});
+
+	onMount(() => {
+		chart = new ApexCharts(chartEl, buildOptions());
+		chart.render();
+		return () => chart?.destroy();
+	});
+
+	$effect(() => {
+		if (chart) {
+			chart.updateOptions(buildOptions());
+		}
+	});
 </script>
 
-<Chart {options} />
+<div bind:this={chartEl}></div>
