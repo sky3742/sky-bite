@@ -1,8 +1,8 @@
 import eslint from '@eslint/js';
-import tseslint from 'typescript-eslint';
-import eslintPluginSvelte from 'eslint-plugin-svelte';
 import prettier from 'eslint-config-prettier';
+import eslintPluginSvelte from 'eslint-plugin-svelte';
 import globals from 'globals';
+import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
 	eslint.configs.recommended,
@@ -43,7 +43,8 @@ export default tseslint.config(
 			'!.env.example',
 			'pnpm-lock.yaml',
 			'package-lock.json',
-			'yarn.lock'
+			'yarn.lock',
+			'.vercel'
 		]
 	},
 	{
