@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import ApexCharts from 'apexcharts';
-	import type { ApexOptions, ApexAxisChartSeries } from 'apexcharts';
+	import type { ApexOptions, ApexAxisChartSeries, default as ApexCharts } from 'apexcharts';
 
 	let chartEl: HTMLDivElement;
 	let chart: ApexCharts | null = $state(null);
@@ -43,8 +42,10 @@
 	});
 
 	onMount(() => {
-		chart = new ApexCharts(chartEl, buildOptions());
-		chart.render();
+		import('apexcharts').then(({ default: ApexCharts }) => {
+			chart = new ApexCharts(chartEl, buildOptions());
+			chart.render();
+		});
 		return () => chart?.destroy();
 	});
 
