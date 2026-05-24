@@ -4,9 +4,7 @@
 	import { updateOrder, processOrder, getOrders } from '$lib/services/order';
 	import { OrderStatus, type Order } from '$lib/types/order';
 
-	let { data } = $props();
-
-	let ordersData = $state(data.orders);
+	let ordersData = $state(getOrders());
 
 	let orders = $derived(
 		ordersData.filter((order) => [OrderStatus.NEW, OrderStatus.INPROGRESS].includes(order.status))

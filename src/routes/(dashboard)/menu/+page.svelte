@@ -18,10 +18,8 @@
 		getCategories
 	} from '$lib/services/category';
 
-	let { data } = $props();
-
-	let categoriesData = $state(data.categories);
-	let menuData = $state(data.menu);
+	let categoriesData = $state(getCategories());
+	let menuData = $state(getFood());
 	let activeTab = $state<'categories' | string>('categories');
 
 	function refresh() {

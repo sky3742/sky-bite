@@ -7,9 +7,7 @@
 	import type { Menu } from '$lib/types/menu';
 	import Drawer from '$lib/components/common/drawer/Drawer.svelte';
 
-	let { data } = $props();
-
-	let ordersData = $state(data.orders);
+	let ordersData = $state(getOrders());
 	let newOrderDrawerHidden = $state(true);
 	let filterStatus = $state(Object.values(OrderStatus));
 	let selectedQuantities = $state<Record<string, number>>({});
