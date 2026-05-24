@@ -1,12 +1,11 @@
 <script lang="ts">
-	import { APP_NAME, APP_URL } from '$lib/constants/Constant';
+	import { APP_NAME } from '$lib/constants/app';
 	import { Logo } from '$lib/icons';
-	import { NavBrand, P } from 'flowbite-svelte';
 </script>
 
-<NavBrand href={APP_URL}>
-	<Logo class="mr-3 h-8 dark:text-white" />
-	<P whitespace="nowrap" align="center" size="2xl" weight="semibold">
+<a href="/" class="flex items-center gap-2">
+	<Logo class="h-8 text-gray-900 dark:text-white" />
+	<span class="whitespace-nowrap text-2xl font-semibold text-gray-900 dark:text-white">
 		{APP_NAME}
-	</P>
-</NavBrand>
+	</span>
+</a>
