@@ -47,6 +47,11 @@
 		"vite": "^8.0.14",
 		"vitest": "^4.1.7"
 	},
+	"pnpm": {
+		"overrides": {
+			"cookie": "^0.7.0"
+		}
+	},
 	"type": "module",
 	"lint-staged": {
 		"*.{svelte,ts,js,css,md,json}": [
