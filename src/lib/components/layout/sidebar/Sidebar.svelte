@@ -84,9 +84,7 @@
 			{/each}
 		</nav>
 
-		<div
-			class="flex items-center justify-center border-t border-gray-200 p-4 dark:border-gray-700"
-		>
+		<div class="flex items-center justify-center border-t border-gray-200 p-4 dark:border-gray-700">
 			<ThemeToggle />
 		</div>
 	</div>

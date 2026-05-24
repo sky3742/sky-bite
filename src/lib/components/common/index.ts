@@ -7,13 +7,4 @@ import PieChart from './pie-chart/PieChart.svelte';
 import ThemeToggle from './theme-toggle/ThemeToggle.svelte';
 import UserMenu from './user-menu/UserMenu.svelte';
 
-export {
-	AnalyticCard,
-	BarChart,
-	DeleteModal,
-	Drawer,
-	LineChart,
-	PieChart,
-	ThemeToggle,
-	UserMenu
-};
+export { AnalyticCard, BarChart, DeleteModal, Drawer, LineChart, PieChart, ThemeToggle, UserMenu };
