@@ -1,7 +1,7 @@
-import { Orders } from '$lib/services/order';
+import { getOrders } from '$lib/services/order';
 
 export function load() {
 	return {
-		orders: Orders
+		orders: getOrders()
 	};
 }

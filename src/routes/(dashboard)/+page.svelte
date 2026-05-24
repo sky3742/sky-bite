@@ -1,41 +1,40 @@
 <script lang="ts">
 	import { AnalyticCard } from '$lib/components/common';
 	import { OrderTable } from '$lib/components/orders';
-	import { processOrder } from '$lib/services/order';
-	import { type Order } from '$lib/types/order';
-	import { OrderStatus } from '$lib/types/order.js';
-	import { Heading } from 'flowbite-svelte';
+	import { updateOrder, processOrder, getOrders } from '$lib/services/order';
+	import { OrderStatus, type Order } from '$lib/types/order';
 
-	export let data;
+	let { data } = $props();
 
-	$: orders = data.orders.filter((order) =>
-		[OrderStatus.NEW, OrderStatus.INPROGRESS].includes(order.status)
+	let ordersData = $state(data.orders);
+
+	let orders = $derived(
+		ordersData.filter((order) => [OrderStatus.NEW, OrderStatus.INPROGRESS].includes(order.status))
 	);
 
-	$: summary = {
-		new: data.orders.filter((order) => order.status === OrderStatus.NEW).length,
-		inProgress: data.orders.filter((order) => order.status === OrderStatus.INPROGRESS).length,
-		completed: data.orders.filter((order) => order.status === OrderStatus.COMPLETED).length,
-		completedSales: data.orders
+	let summary = $derived({
+		new: ordersData.filter((order) => order.status === OrderStatus.NEW).length,
+		inProgress: ordersData.filter((order) => order.status === OrderStatus.INPROGRESS).length,
+		completed: ordersData.filter((order) => order.status === OrderStatus.COMPLETED).length,
+		completedSales: ordersData
 			.filter((order) => order.status === OrderStatus.COMPLETED)
 			.reduce((acc, curr) => acc + curr.amount, 0)
 			.toLocaleString(undefined, {
 				style: 'currency',
 				currency: 'MYR'
 			}),
-		pendingSales: data.orders
+		pendingSales: ordersData
 			.filter((order) => order.status === OrderStatus.INPROGRESS)
 			.reduce((acc, curr) => acc + curr.amount, 0)
 			.toLocaleString(undefined, {
 				style: 'currency',
 				currency: 'MYR'
 			})
-	};
+	});
 
 	function handleUpdateOrder(order: Order) {
-		const orderIndex = data.orders.findIndex((item) => item.id === order.id);
-		data.orders[orderIndex] = processOrder(order);
-		data.orders = [...data.orders];
+		updateOrder(processOrder(order));
+		ordersData = getOrders();
 	}
 </script>
 
@@ -49,7 +48,7 @@
 	</div>
 
 	<div class="flex flex-col gap-6">
-		<Heading tag="h3">Orders</Heading>
+		<h3 class="text-lg font-semibold text-gray-900 dark:text-white">Orders</h3>
 		<OrderTable {orders} onUpdateOrder={handleUpdateOrder} />
 	</div>
 </div>

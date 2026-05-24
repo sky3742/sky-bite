@@ -1,5 +1,13 @@
 <script>
 	import { Navbar, Sidebar } from '$lib/components/layout';
+	import { onMount } from 'svelte';
+	import { goto } from '$app/navigation';
+
+	onMount(() => {
+		if (!localStorage.getItem('sb-auth')) {
+			goto('/login');
+		}
+	});
 </script>
 
 <div class="flex bg-gray-50 antialiased dark:bg-gray-900">

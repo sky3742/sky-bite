@@ -1,9 +1,5 @@
 <script>
-	import { initFlowbite } from 'flowbite';
-	import { onMount } from 'svelte';
-	import '../app.pcss';
-
-	onMount(initFlowbite);
+	import '../app.css';
 </script>
 
 <slot />

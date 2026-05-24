@@ -1,9 +1,9 @@
-import { Categories } from '$lib/services/category';
-import { Food } from '$lib/services/menu';
+import { getCategories } from '$lib/services/category';
+import { getFood } from '$lib/services/menu';
 
 export function load() {
 	return {
-		categories: Categories,
-		menu: Food
+		categories: getCategories(),
+		menu: getFood()
 	};
 }
